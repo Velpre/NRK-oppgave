@@ -56,8 +56,8 @@
 		F46269392A17C46B00F46852 /* NRK-oppgave */ = {
 			isa = PBXGroup;
 			children = (
-				F462693A2A17C46B00F46852 /* AppDelegate.swift */,
-				F462693C2A17C46B00F46852 /* SceneDelegate.swift */,
+				F462694F2A17C56900F46852 /* New Group */,
+				F462694E2A17C55900F46852 /* Supporting files */,
 				F462693E2A17C46B00F46852 /* ViewController.swift */,
 				F46269402A17C46B00F46852 /* Main.storyboard */,
 				F46269432A17C46C00F46852 /* Assets.xcassets */,
@@ -65,6 +65,22 @@
 				F46269482A17C46C00F46852 /* Info.plist */,
 			);
 			path = "NRK-oppgave";
+			sourceTree = "<group>";
+		};
+		F462694E2A17C55900F46852 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				F462693A2A17C46B00F46852 /* AppDelegate.swift */,
+				F462693C2A17C46B00F46852 /* SceneDelegate.swift */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		F462694F2A17C56900F46852 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
