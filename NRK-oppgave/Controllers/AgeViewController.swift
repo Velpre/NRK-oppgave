@@ -12,7 +12,7 @@ class AgeViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var watchButton: UIButton!
     
-    let ageDataModel = AgeViewDataModel()
+    let ageDataModel = AgeDataModel()
     var selectedAge:String?
     
     override func viewDidLoad() {

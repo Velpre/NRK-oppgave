@@ -7,15 +7,34 @@
 
 import UIKit
 
+
+
 class ProgramCollectionViewController: UIViewController {
     
     var userAge: String!
+    
+    var programDataModel = ProgramDataModel()
+    let spinnerVC = LoadingSpinnerViewController()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Addspinner
-        //Call fetch method from ProgramDataModel
+        programDataModel.delegate = self
+        addSpinner(to: self, spinner: spinnerVC)
+        programDataModel.fetchProgram(age: userAge)
     }
+    
+}
 
-
+extension ProgramCollectionViewController: DataManagerDelegate{
+    func didUpdateData(_ movie: Movie, _ imageList: [UIImage]) {
+        print(movie)
+        print("-----------")
+        print(imageList)
+        self.spinnerVC.view.removeFromSuperview()
+    }
+    
+    func didFoundError(_ error: String) {
+        print(error)
+    }
 }
