@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F40426B42A17EAEA00429AE4 /* AgeViewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40426B32A17EAEA00429AE4 /* AgeViewDataModel.swift */; };
+		F40426B62A17ECBD00429AE4 /* ProgramCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40426B52A17ECBD00429AE4 /* ProgramCollectionViewController.swift */; };
 		F462693B2A17C46B00F46852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462693A2A17C46B00F46852 /* AppDelegate.swift */; };
 		F462693D2A17C46B00F46852 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462693C2A17C46B00F46852 /* SceneDelegate.swift */; };
-		F462693F2A17C46B00F46852 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462693E2A17C46B00F46852 /* ViewController.swift */; };
+		F462693F2A17C46B00F46852 /* AgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462693E2A17C46B00F46852 /* AgeViewController.swift */; };
 		F46269422A17C46B00F46852 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46269402A17C46B00F46852 /* Main.storyboard */; };
 		F46269442A17C46C00F46852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46269432A17C46C00F46852 /* Assets.xcassets */; };
 		F46269472A17C46C00F46852 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46269452A17C46C00F46852 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F40426B32A17EAEA00429AE4 /* AgeViewDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeViewDataModel.swift; sourceTree = "<group>"; };
+		F40426B52A17ECBD00429AE4 /* ProgramCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramCollectionViewController.swift; sourceTree = "<group>"; };
 		F46269372A17C46B00F46852 /* NRK-oppgave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NRK-oppgave.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F462693A2A17C46B00F46852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F462693C2A17C46B00F46852 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F462693E2A17C46B00F46852 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F462693E2A17C46B00F46852 /* AgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeViewController.swift; sourceTree = "<group>"; };
 		F46269412A17C46B00F46852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F46269432A17C46C00F46852 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F46269462A17C46C00F46852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,9 +60,10 @@
 		F46269392A17C46B00F46852 /* NRK-oppgave */ = {
 			isa = PBXGroup;
 			children = (
-				F462694F2A17C56900F46852 /* New Group */,
 				F462694E2A17C55900F46852 /* Supporting files */,
-				F462693E2A17C46B00F46852 /* ViewController.swift */,
+				F46269512A17C59C00F46852 /* Views */,
+				F46269502A17C59800F46852 /* Model */,
+				F462694F2A17C56900F46852 /* Controllers */,
 				F46269402A17C46B00F46852 /* Main.storyboard */,
 				F46269432A17C46C00F46852 /* Assets.xcassets */,
 				F46269452A17C46C00F46852 /* LaunchScreen.storyboard */,
@@ -76,11 +81,28 @@
 			path = "Supporting files";
 			sourceTree = "<group>";
 		};
-		F462694F2A17C56900F46852 /* New Group */ = {
+		F462694F2A17C56900F46852 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F462693E2A17C46B00F46852 /* AgeViewController.swift */,
+				F40426B52A17ECBD00429AE4 /* ProgramCollectionViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F46269502A17C59800F46852 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F40426B32A17EAEA00429AE4 /* AgeViewDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F46269512A17C59C00F46852 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "New Group";
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,9 +176,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F462693F2A17C46B00F46852 /* ViewController.swift in Sources */,
+				F40426B42A17EAEA00429AE4 /* AgeViewDataModel.swift in Sources */,
+				F462693F2A17C46B00F46852 /* AgeViewController.swift in Sources */,
 				F462693B2A17C46B00F46852 /* AppDelegate.swift in Sources */,
 				F462693D2A17C46B00F46852 /* SceneDelegate.swift in Sources */,
+				F40426B62A17ECBD00429AE4 /* ProgramCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
