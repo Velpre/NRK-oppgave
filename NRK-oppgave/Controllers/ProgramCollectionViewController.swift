@@ -12,9 +12,13 @@ import UIKit
 class ProgramCollectionViewController: UIViewController {
     
     var userAge: String!
+    var movie = [Item]()
+    var movieImgList = [UIImage]()
     
     var programDataModel = ProgramDataModel()
     let spinnerVC = LoadingSpinnerViewController()
+    
+    
 
 
     override func viewDidLoad() {
@@ -26,8 +30,9 @@ class ProgramCollectionViewController: UIViewController {
     
 }
 
+
 extension ProgramCollectionViewController: DataManagerDelegate{
-    func didUpdateData(_ movie: Movie, _ imageList: [UIImage]) {
+    func didUpdateData(_ movie: [Item], _ imageList: [UIImage]) {
         print(movie)
         print("-----------")
         print(imageList)

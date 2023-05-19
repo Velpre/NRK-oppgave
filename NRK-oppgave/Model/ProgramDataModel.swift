@@ -10,7 +10,7 @@ import UIKit
 
 //Protocol delegate for passing data
 protocol DataManagerDelegate{
-    func didUpdateData(_ movie: Movie, _ imageList: [UIImage])
+    func didUpdateData(_ movie: [Item], _ imageList: [UIImage])
     func didFoundError(_ error: String)
 }
 
@@ -38,12 +38,11 @@ struct ProgramDataModel{
         }
     }
     
-    
-    
+
     func fetchProgram(age: String) {
         let url = "https://psapi.nrk.no/tv/headliners/default?contentGroup=children&age=" + age
         let group = DispatchGroup()
-        var movie: Movie?
+        var movie = [Item]()
         var movieImages = [UIImage]()
         
         group.enter()
@@ -54,8 +53,8 @@ struct ProgramDataModel{
                 return
             }
             if let safeData = result {
-                movie = safeData
                 for item in safeData.headliners {
+                    movie.append(item)
                     if let imageURL = URL(string: item.images[0].uri) {
                         group.enter()
                         self.downloadImage(url: imageURL) { imageResult in
@@ -65,7 +64,10 @@ struct ProgramDataModel{
                             group.leave()
                         }
                     }
+                    
+                   
                 }
+                
                 group.leave()
             } else {
                 print("error")
@@ -73,14 +75,10 @@ struct ProgramDataModel{
                 return
             }
         }
-        
         group.notify(queue: .main) {
-            self.delegate?.didUpdateData(movie!, movieImages)
-
+                self.delegate?.didUpdateData(movie, movieImages)
         }
     }
-    
-    
     
     func downloadImage(url: URL, completion: @escaping (UIImage?) -> Void) {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
