@@ -15,6 +15,7 @@ protocol DataManagerDelegate{
 }
 
 struct ProgramDataModel{
+    
     var delegate: DataManagerDelegate?
     //Fetching data
     func getData(url:String, completion: @escaping (Error?, Movie?) -> ()) {
@@ -22,6 +23,7 @@ struct ProgramDataModel{
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if error != nil {
                     completion(error, nil)
+                    self.delegate?.didFoundError(error!.localizedDescription)
                     return
                 }
                 
@@ -32,6 +34,7 @@ struct ProgramDataModel{
                         completion(nil, results)
                     } catch {
                         completion(error, nil)
+                        self.delegate?.didFoundError(error.localizedDescription)
                     }
                 }
             }.resume()
@@ -48,14 +51,14 @@ struct ProgramDataModel{
         group.enter()
         getData(url: url) { error, result in
             if let error = error {
-                print(error)
+                self.delegate?.didFoundError(error.localizedDescription)
                 group.leave()
                 return
             }
             if let safeData = result {
                 for item in safeData.headliners {
                     movie.append(item)
-                    if let imageURL = URL(string: item.images[2].uri) {
+                    if let imageURL = URL(string: item.images[3].uri) {
                         group.enter()
                         self.downloadImage(url: imageURL) { imageResult in
                             if let image = imageResult {
@@ -67,10 +70,9 @@ struct ProgramDataModel{
                     
                    
                 }
-                
                 group.leave()
             } else {
-                print("error")
+                self.delegate?.didFoundError(error!.localizedDescription)
                 group.leave()
                 return
             }
@@ -94,7 +96,5 @@ struct ProgramDataModel{
                 }
             }.resume()
     }
-    
-    
-    
+
 }

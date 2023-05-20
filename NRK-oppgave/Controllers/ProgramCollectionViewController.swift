@@ -124,6 +124,6 @@ extension ProgramCollectionViewController: DataManagerDelegate{
     }
     
     func didFoundError(_ error: String) {
-        print(error)
+        showAlertWith(message: error)
     }
 }
