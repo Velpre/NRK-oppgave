@@ -28,7 +28,6 @@ class ProgramCollectionViewController: UIViewController {
         programDataModel.delegate = self
         collectionView.dataSource = self
         collectionView.delegate = self
-        programDataModel.videoDelegate = self
         
         //Handeling data fetch
         addSpinner(to: self, spinner: spinnerVC)
@@ -115,7 +114,12 @@ extension ProgramCollectionViewController: UICollectionViewDelegate, UICollectio
         
         if checkIfSerie(movie: movieList[indexPath.row]){
             if let href = movieList[indexPath.row]._links.playback?.href{
-                programDataModel.fetchVideoInfo(path: href)
+                
+                let videoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PlayVideoViewController") as! PlayVideoViewController
+                videoVC.href = href
+                //Pushing controller to navigation stack
+                navigationController?.pushViewController(videoVC, animated: true)
+                
             }
         }else{
             showAlertWith(message: "Denne er ikke mulig år se", title: "Info")
@@ -127,9 +131,6 @@ extension ProgramCollectionViewController: UICollectionViewDelegate, UICollectio
 
 extension ProgramCollectionViewController: DataManagerDelegate{
     func didUpdateData(_ movie: [Item], _ imageList: [UIImage]) {
-        //print(movie)
-//        print("-----------")
-//        print(imageList)
         self.movieList = movie
         self.movieImgList = imageList
         self.collectionView.reloadData()
@@ -142,8 +143,4 @@ extension ProgramCollectionViewController: DataManagerDelegate{
 }
 
 
-extension ProgramCollectionViewController: VideoManagerDelegate{
-    func didUpdateVideo(_ video: String) {
-        print(video)
-    }
-}
+
