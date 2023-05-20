@@ -16,6 +16,7 @@
 		F40426C12A1844AB00429AE4 /* CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40426C02A1844AB00429AE4 /* CompositionalLayout.swift */; };
 		F40426C32A18451200429AE4 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40426C22A18451200429AE4 /* MovieCollectionViewCell.swift */; };
 		F40426C52A18D60300429AE4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40426C42A18D60300429AE4 /* Extensions.swift */; };
+		F40426C92A18ED2100429AE4 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40426C82A18ED2100429AE4 /* Video.swift */; };
 		F462693B2A17C46B00F46852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462693A2A17C46B00F46852 /* AppDelegate.swift */; };
 		F462693D2A17C46B00F46852 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462693C2A17C46B00F46852 /* SceneDelegate.swift */; };
 		F462693F2A17C46B00F46852 /* AgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462693E2A17C46B00F46852 /* AgeViewController.swift */; };
@@ -34,6 +35,7 @@
 		F40426C02A1844AB00429AE4 /* CompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayout.swift; sourceTree = "<group>"; };
 		F40426C22A18451200429AE4 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		F40426C42A18D60300429AE4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F40426C82A18ED2100429AE4 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		F46269372A17C46B00F46852 /* NRK-oppgave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NRK-oppgave.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F462693A2A17C46B00F46852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F462693C2A17C46B00F46852 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				F40426B32A17EAEA00429AE4 /* AgeDataModel.swift */,
 				F40426B72A17F17000429AE4 /* ProgramDataModel.swift */,
 				F40426B92A17F5F800429AE4 /* Movie.swift */,
+				F40426C82A18ED2100429AE4 /* Video.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				F462693B2A17C46B00F46852 /* AppDelegate.swift in Sources */,
 				F40426C52A18D60300429AE4 /* Extensions.swift in Sources */,
 				F40426BD2A183DCA00429AE4 /* LoadingSpinnerViewController.swift in Sources */,
+				F40426C92A18ED2100429AE4 /* Video.swift in Sources */,
 				F40426C32A18451200429AE4 /* MovieCollectionViewCell.swift in Sources */,
 				F462693D2A17C46B00F46852 /* SceneDelegate.swift in Sources */,
 				F40426B62A17ECBD00429AE4 /* ProgramCollectionViewController.swift in Sources */,

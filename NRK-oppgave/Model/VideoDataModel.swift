@@ -1,29 +1,23 @@
 //
-//  ProgramDataModel.swift
+//  VideoDataModel.swift
 //  NRK-oppgave
 //
-//  Created by VP on 19/05/2023.
+//  Created by VP on 20/05/2023.
 //
 
 import Foundation
-import UIKit
+
 
 //Protocol delegate for passing data
-protocol DataManagerDelegate{
-    func didUpdateData(_ movie: [Item], _ imageList: [UIImage])
-    func didFoundError(_ error: String)
-}
+//protocol VideoManagerDelegate{
+//    func didUpdateVideo(_ movie: [Item], _ imageList: [UIImage])
+//    func didFoundError(_ error: String)
+//}
 
-//Protocol delegate for passing video data
-protocol VideoManagerDelegate{
-    func didUpdateVideo(_ video: String)
-}
-
-struct ProgramDataModel{
-    var delegate: DataManagerDelegate?
-    var videoDelegate: VideoManagerDelegate?
-    //Fetching movie data
-    func getMovieData(url:String, completion: @escaping (Error?, Movie?) -> ()) {
+struct VideoDataModel{
+//  var delegate: VideoManagerDelegate?
+    //Fetching data
+    func getData(url:String, completion: @escaping (Error?, Movie?) -> ()) {
         if let url = URL(string: url) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if error != nil {
@@ -46,30 +40,6 @@ struct ProgramDataModel{
         }
     }
     
-    //Fetching video data
-    func getVideoData(url:String, completion: @escaping (Error?, Video?) -> ()) {
-        if let url = URL(string: url) {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                if error != nil {
-                    completion(error, nil)
-                    self.delegate?.didFoundError(error!.localizedDescription)
-                    return
-                }
-
-                if let safeData = data {
-                    let decoder = JSONDecoder()
-                    do  {
-                        let results = try decoder.decode(Video.self, from: safeData)
-                        completion(nil, results)
-                    } catch {
-                        completion(error, nil)
-                        self.delegate?.didFoundError(error.localizedDescription)
-                    }
-                }
-            }.resume()
-        }
-    }
-    
 
     func fetchProgram(age: String) {
         let url = "https://psapi.nrk.no/tv/headliners/default?contentGroup=children&age=" + age
@@ -78,7 +48,7 @@ struct ProgramDataModel{
         var movieImages = [UIImage]()
         
         group.enter()
-        getMovieData(url: url) { error, result in
+        getData(url: url) { error, result in
             if let error = error {
                 self.delegate?.didFoundError(error.localizedDescription)
                 group.leave()
@@ -129,27 +99,7 @@ struct ProgramDataModel{
     
     func fetchVideoInfo(path:String){
         let url = "https://psapi.nrk.no" + path
-        var formatedVideo:String?
-        
-        getVideoData(url: url) { error, result in
-            if let error = error {
-                self.delegate?.didFoundError(error.localizedDescription)
-                return
-            }
-            if let safeData = result {
-                for video in safeData.playable.assets {
-                    if video.format == "HLS"{
-                        formatedVideo = video.url
-                        self.videoDelegate?.didUpdateVideo(formatedVideo!)
-                    }else{
-                        self.delegate?.didFoundError("Video have bad format")
-                    }
-                }
-
-            }else{
-                self.delegate?.didFoundError(error!.localizedDescription)
-                return
-            }
-        }
+        print("------------------pLAAAAAAAY")
+        print(url)
     }
 }

@@ -16,14 +16,21 @@ struct Item:Codable{
     var subTitle: String
     var type:String
     var images:[Image]
-//  var links:[Link]
+    var _links:Links
 }
+
+struct Links:Codable{
+    var playback:Link?
+}
+
+struct Link:Codable{
+    var href:String
+}
+
 
 struct Image:Codable{
     var uri:String
 }
-
-//Need to make codable for fetching links for watching movie
 
 
 
