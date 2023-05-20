@@ -20,6 +20,7 @@ class ProgramCollectionViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var userageOutlet: UILabel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +64,17 @@ class ProgramCollectionViewController: UIViewController {
         //return
         return UICollectionViewCompositionalLayout(section: section)
     }
-
+    
+    //Checking if item is serie or not. If it is Serie show serie marker inside cell, if not showing play button inside cell.
+    func checkIfSerie(movie: Item, cell: MovieCollectionViewCell){
+        if movie.type == "series" {
+            cell.serieMarkerOutlet.isHidden = false
+            cell.playButton.isHidden = true
+        } else if movie.type == "program"{
+            cell.playButton.isHidden = false
+            cell.serieMarkerOutlet.isHidden = true
+        }
+    }
     
 }
 
@@ -75,10 +86,17 @@ extension ProgramCollectionViewController: UICollectionViewDelegate, UICollectio
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MovieCollectionViewCell
+        let movie = movieList[indexPath.row]
+        
         cell.movieImage.image = movieImgList[indexPath.row]
+        cell.title.text = movie.title
+        cell.undertitle.text = movie.subTitle
+        
+        checkIfSerie(movie: movie, cell: cell)
+        
         cell.layer.cornerRadius = 15
         cell.clipsToBounds = true
-        cell.setNeedsLayout()
+        
         return cell
     }
     
