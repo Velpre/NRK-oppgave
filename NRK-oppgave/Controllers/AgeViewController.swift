@@ -21,6 +21,8 @@ class AgeViewController: UIViewController {
         pickerView.dataSource = self
         //Hidding button until user has choosen age
         watchButton.isHidden = true
+        watchButton.layer.cornerRadius = 15
+        
     }
 
     //Sending user to next page and sending age of the user value to the next controller
@@ -47,6 +49,15 @@ extension AgeViewController:UIPickerViewDelegate, UIPickerViewDataSource{
         //Unhiding button after user choose age
         watchButton.isHidden = false
         selectedAge = ageDataModel.ageNumberArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let title = ageDataModel.ageNumberArray[row]
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.white // Set the desired color for the options
+        ]
+        
+        return NSAttributedString(string: title, attributes: attributes)
     }
     
 }

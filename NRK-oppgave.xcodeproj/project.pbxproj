@@ -13,6 +13,8 @@
 		F40426BA2A17F5F800429AE4 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40426B92A17F5F800429AE4 /* Movie.swift */; };
 		F40426BD2A183DCA00429AE4 /* LoadingSpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40426BC2A183DCA00429AE4 /* LoadingSpinnerViewController.swift */; };
 		F40426BF2A183E1500429AE4 /* Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40426BE2A183E1500429AE4 /* Factories.swift */; };
+		F40426C12A1844AB00429AE4 /* CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40426C02A1844AB00429AE4 /* CompositionalLayout.swift */; };
+		F40426C32A18451200429AE4 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40426C22A18451200429AE4 /* MovieCollectionViewCell.swift */; };
 		F462693B2A17C46B00F46852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462693A2A17C46B00F46852 /* AppDelegate.swift */; };
 		F462693D2A17C46B00F46852 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462693C2A17C46B00F46852 /* SceneDelegate.swift */; };
 		F462693F2A17C46B00F46852 /* AgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F462693E2A17C46B00F46852 /* AgeViewController.swift */; };
@@ -28,6 +30,8 @@
 		F40426B92A17F5F800429AE4 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		F40426BC2A183DCA00429AE4 /* LoadingSpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingSpinnerViewController.swift; sourceTree = "<group>"; };
 		F40426BE2A183E1500429AE4 /* Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factories.swift; sourceTree = "<group>"; };
+		F40426C02A1844AB00429AE4 /* CompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayout.swift; sourceTree = "<group>"; };
+		F40426C22A18451200429AE4 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		F46269372A17C46B00F46852 /* NRK-oppgave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NRK-oppgave.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F462693A2A17C46B00F46852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F462693C2A17C46B00F46852 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 			children = (
 				F40426BC2A183DCA00429AE4 /* LoadingSpinnerViewController.swift */,
 				F40426BE2A183E1500429AE4 /* Factories.swift */,
+				F40426C02A1844AB00429AE4 /* CompositionalLayout.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -121,6 +126,7 @@
 		F46269512A17C59C00F46852 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F40426C22A18451200429AE4 /* MovieCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,8 +207,10 @@
 				F40426B42A17EAEA00429AE4 /* AgeDataModel.swift in Sources */,
 				F40426BA2A17F5F800429AE4 /* Movie.swift in Sources */,
 				F462693F2A17C46B00F46852 /* AgeViewController.swift in Sources */,
+				F40426C12A1844AB00429AE4 /* CompositionalLayout.swift in Sources */,
 				F462693B2A17C46B00F46852 /* AppDelegate.swift in Sources */,
 				F40426BD2A183DCA00429AE4 /* LoadingSpinnerViewController.swift in Sources */,
+				F40426C32A18451200429AE4 /* MovieCollectionViewCell.swift in Sources */,
 				F462693D2A17C46B00F46852 /* SceneDelegate.swift in Sources */,
 				F40426B62A17ECBD00429AE4 /* ProgramCollectionViewController.swift in Sources */,
 			);

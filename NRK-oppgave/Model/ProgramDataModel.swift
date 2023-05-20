@@ -55,7 +55,7 @@ struct ProgramDataModel{
             if let safeData = result {
                 for item in safeData.headliners {
                     movie.append(item)
-                    if let imageURL = URL(string: item.images[0].uri) {
+                    if let imageURL = URL(string: item.images[2].uri) {
                         group.enter()
                         self.downloadImage(url: imageURL) { imageResult in
                             if let image = imageResult {
