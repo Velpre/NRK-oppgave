@@ -65,15 +65,14 @@ class ProgramCollectionViewController: UIViewController {
         return UICollectionViewCompositionalLayout(section: section)
     }
     
-    //Checking if item is serie or not. If it is Serie show serie marker inside cell, if not showing play button inside cell.
-    func checkIfSerie(movie: Item, cell: MovieCollectionViewCell){
+    //Checking if item is playeble(program) or not
+    func checkIfSerie(movie: Item) -> Bool{
         if movie.type == "series" {
-            cell.serieMarkerOutlet.isHidden = false
-            cell.playButton.isHidden = true
+            return false
         } else if movie.type == "program"{
-            cell.playButton.isHidden = false
-            cell.serieMarkerOutlet.isHidden = true
+            return true
         }
+        return false
     }
     
 }
@@ -92,7 +91,17 @@ extension ProgramCollectionViewController: UICollectionViewDelegate, UICollectio
         cell.title.text = movie.title
         cell.undertitle.text = movie.subTitle
         
-        checkIfSerie(movie: movie, cell: cell)
+        //Checking if item is playeble(program) or not
+        let checkIfPlayble = checkIfSerie(movie: movie)
+        
+        //Adding UI depending if it is playable(program) or not
+        if !checkIfPlayble {
+            cell.serieMarkerOutlet.isHidden = false
+            cell.playButton.isHidden = true
+        } else {
+            cell.playButton.isHidden = false
+            cell.serieMarkerOutlet.isHidden = true
+        }
         
         cell.layer.cornerRadius = 15
         cell.clipsToBounds = true
@@ -100,23 +109,24 @@ extension ProgramCollectionViewController: UICollectionViewDelegate, UICollectio
         return cell
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let comicVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ComicViewController") as! ComicViewController
-//
-//        //Passing data to ComicViewController
-//        comicVC.comicImage = comicImgList[indexPath.row]
-//        comicVC.comic = comicList[indexPath.row]
-//        //Pushing controller to navigation stack
-//        navigationController?.pushViewController(comicVC, animated: true)
+        
+        if checkIfSerie(movie: movieList[indexPath.row]){
+            programDataModel.fetchVideoInfo()
+        }else{
+            showAlertWith(message: "Denne er ikke mulig år se", title: "Info")
+        }
+
     }
 }
 
 
 extension ProgramCollectionViewController: DataManagerDelegate{
     func didUpdateData(_ movie: [Item], _ imageList: [UIImage]) {
-        print(movie)
-        print("-----------")
-        print(imageList)
+//        print(movie)
+//        print("-----------")
+//        print(imageList)
         self.movieList = movie
         self.movieImgList = imageList
         self.collectionView.reloadData()

@@ -96,5 +96,9 @@ struct ProgramDataModel{
                 }
             }.resume()
     }
+    
+    func fetchVideoInfo(){
+        print("plaaay")
+    }
 
 }
