@@ -22,32 +22,9 @@ protocol VideoManagerDelegate{
 struct ProgramDataModel{
     var delegate: DataManagerDelegate?
     var videoDelegate: VideoManagerDelegate?
-    //Fetching movie data
-    func getMovieData(url:String, completion: @escaping (Error?, Movie?) -> ()) {
-        if let url = URL(string: url) {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                if error != nil {
-                    completion(error, nil)
-                    self.delegate?.didFoundError(error!.localizedDescription)
-                    return
-                }
-                
-                if let safeData = data {
-                    let decoder = JSONDecoder()
-                    do  {
-                        let results = try decoder.decode(Movie.self, from: safeData)
-                        completion(nil, results)
-                    } catch {
-                        completion(error, nil)
-                        self.delegate?.didFoundError(error.localizedDescription)
-                    }
-                }
-            }.resume()
-        }
-    }
     
-    //Fetching video data
-    func getVideoData(url:String, completion: @escaping (Error?, Video?) -> ()) {
+    //function thats fetch data and use generic
+    func fetchData<T: Codable>(url: String, completion: @escaping (Error?, T?) -> ()) {
         if let url = URL(string: url) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if error != nil {
@@ -59,7 +36,7 @@ struct ProgramDataModel{
                 if let safeData = data {
                     let decoder = JSONDecoder()
                     do  {
-                        let results = try decoder.decode(Video.self, from: safeData)
+                        let results = try decoder.decode(T.self, from: safeData)
                         completion(nil, results)
                     } catch {
                         completion(error, nil)
@@ -69,8 +46,8 @@ struct ProgramDataModel{
             }.resume()
         }
     }
-    
 
+    
     func fetchProgram(age: String) {
         let url = "https://psapi.nrk.no/tv/headliners/default?contentGroup=children&age=" + age
         let group = DispatchGroup()
@@ -78,7 +55,7 @@ struct ProgramDataModel{
         var movieImages = [UIImage]()
         
         group.enter()
-        getMovieData(url: url) { error, result in
+        fetchData(url: url) { (error: Error?, result: Movie?) in
             if let error = error {
                 self.delegate?.didFoundError(error.localizedDescription)
                 group.leave()
@@ -112,26 +89,11 @@ struct ProgramDataModel{
         }
     }
     
-    func downloadImage(url: URL, completion: @escaping (UIImage?) -> Void) {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                  guard let data = data, error == nil else {
-                      completion(nil)
-                      return
-                  }
-                if let image = UIImage(data: data) {
-                    completion(image)
-                    
-                } else {
-                    completion(nil)
-                }
-            }.resume()
-    }
-    
     func fetchVideoInfo(path:String){
         let url = "https://psapi.nrk.no" + path
         var formatedVideo:String?
         
-        getVideoData(url: url) { error, result in
+        fetchData(url: url) { (error: Error?, result: Video?)  in
             if let error = error {
                 self.delegate?.didFoundError(error.localizedDescription)
                 return
@@ -152,4 +114,21 @@ struct ProgramDataModel{
             }
         }
     }
+
+    
+    func downloadImage(url: URL, completion: @escaping (UIImage?) -> Void) {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                  guard let data = data, error == nil else {
+                      completion(nil)
+                      return
+                  }
+                if let image = UIImage(data: data) {
+                    completion(image)
+                    
+                } else {
+                    completion(nil)
+                }
+            }.resume()
+    }
+    
 }
